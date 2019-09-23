@@ -27,7 +27,7 @@ SECRET_KEY = SECRET_KEY = config('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = '.herokuapp.com'
+ALLOWED_HOSTS = ALLOWED_HOSTS = config('ALLOWED_HOSTS')
 
 
 # Application definition
@@ -92,11 +92,9 @@ WSGI_APPLICATION = 'adv_project.wsgi.application'
 # https://docs.djangoproject.com/en/2.1/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': dj_database_url.parse('postgres://...', conn_max_age=600),
-    }
+    'default': dj_database_url.config('DATABASE_URL', default='sqlite:///db.sqlite3')
 }
+
 
 # Password validation
 # https://docs.djangoproject.com/en/2.1/ref/settings/#auth-password-validators
@@ -153,4 +151,4 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 import django_heroku
 django_heroku.settings(locals())
-del DATABASES['default']['OPTIONS']['sslmode']
+#del DATABASES['default']['OPTIONS']['sslmode']
