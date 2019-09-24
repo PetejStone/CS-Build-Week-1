@@ -93,8 +93,12 @@ WSGI_APPLICATION = 'adv_project.wsgi.application'
 # #Database
 # https://docs.djangoproject.com/en/2.1/ref/settings/#databases
 
+# DATABASES = {}
+# DATABASES['default'] = dj_database_url.config(conn_max_age=600)
+
+
 DATABASES = {
-    'default': dj_database_url.config("DATABASE_URL")
+    'default': dj_database_url.config('DATABASE_URL', default='sqlite:///db.sqlite3')
 }
 
 
@@ -151,4 +155,4 @@ STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 django_heroku.settings(locals())
-#del DATABASES['default']['OPTIONS']['sslmode']
+del DATABASES['default']['OPTIONS']['sslmode']
