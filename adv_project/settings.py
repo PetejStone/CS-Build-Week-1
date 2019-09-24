@@ -10,11 +10,10 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/2.1/ref/settings/
 """
 
+import dj_database_url
 import django_heroku
 from rest_framework.authentication import SessionAuthentication, BasicAuthentication, TokenAuthentication
 import os
-import dj_database_url
-import dotenv
 from decouple import config
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
